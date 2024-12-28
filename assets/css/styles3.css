@@ -3,12 +3,18 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
 }
 
 .site-header {
     background-color: #333;
     color: #fff;
     padding: 10px 20px;
+    position: fixed; /* Fija el header en la parte superior */ 
+    top: 0; /* Posiciona el header en la parte superior */ 
+    width: 100%; /* Asegura que el header ocupe todo el ancho de la pantalla */ 
+    z-index: 1000; /* Asegura que el header se superponga a otros elementos */
 }
 
 .main-nav {
@@ -25,16 +31,26 @@ body {
     list-style: none;
     display: flex;
     gap: 15px;
+    padding-right: 50px;
 }
 
 .main-nav a {
     color: #fff;
     text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.main-nav a:hover {
+    background-color: #ffffff;
+    color: #282c34;
 }
 
 .menu-icon {
     display: none;
     font-size: 1.5em;
+    padding-right: 50px;
 }
 
 .container {
@@ -44,6 +60,7 @@ body {
         "main";
     gap: 20px;
     padding: 20px;
+    margin-top: 70px;
 }
 
 .filter {
@@ -77,6 +94,12 @@ body {
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .product-card img {
@@ -84,6 +107,12 @@ body {
     height: 200px;
     object-fit: cover;
     object-position: center;
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+}
+
+.product-card img:hover {
+    filter: grayscale(0%);
 }
 
 .product-card h3 {
@@ -138,6 +167,12 @@ body {
     padding: 10px 20px;
 }
 
+.contact-info p,
+.social-media a {
+    margin: 5px 0;
+    color: #ccc;
+}
+
 /* Estilos para dispositivos móviles */
 @media (max-width: 575px) {
     .main-nav ul {
@@ -151,7 +186,8 @@ body {
     .container {
         grid-template-areas: 
             "filter"
-            "main";
+            "main"
+            "sidebar";
     }
 
     .product-grid {
